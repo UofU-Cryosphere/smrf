@@ -160,7 +160,7 @@ class WinstralWindModel(image_data.image_data):
         Follows the following steps for station measurements:
 
         1. Adjust measured wind speeds at the stations and determine the wind
-            direction componenets
+            direction components
         2. Distribute the flat wind speed
         3. Distribute the wind direction components
         4. Simulate the wind speeds based on the distribute flat wind, wind
@@ -290,7 +290,7 @@ class WinstralWindModel(image_data.image_data):
     def stationMaxus(self, data_speed, data_direction):
         """
         Determine the maxus value at the station given the wind direction.
-        Can specify the enhancemet for each station or use the default, along
+        Can specify the enhancement for each station or use the default, along
         with whether or not the station is on a peak which will ensure that
         the station cannot be sheltered. The station enhancement and peak
         stations are specified in the [wind] section of the configuration
@@ -324,6 +324,7 @@ class WinstralWindModel(image_data.image_data):
             if not pd.isnull(data_direction[m]):
                 if self.config['station_peak'] is not None:
                     if m.upper() in self.config['station_peak']:
+            if m in data_direction.index:
                         val_maxus = np.min(self.maxus[:, yi, xi] + e)
 
                 else:
