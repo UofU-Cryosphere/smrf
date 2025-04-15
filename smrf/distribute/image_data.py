@@ -118,9 +118,9 @@ class image_data():
         stations = None
 
         # determine the stations that will be used, alphabetical order
-        if "stations" in config.keys():
-            if config["stations"] is not None:
-                stations = config['stations'].sort()
+        if "stations" in config.keys() and config["stations"] is not None:
+            stations = config['stations']
+            stations.sort()
 
         self.stations = stations
 
@@ -131,7 +131,7 @@ class image_data():
 
         Args:
             topo: :mod:`smrf.data.loadTopo.Topo` instance contain topographic
-                data and infomation
+                data and information
             metadata: metadata Pandas dataframe containing the station metadata
                 from :mod:`smrf.data.loadData` or :mod:`smrf.data.loadGrid`
 
